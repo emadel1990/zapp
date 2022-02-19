@@ -1,7 +1,7 @@
 import React from "react";
 
 const style = {
-  wrapper: `w-screen px-[1.2rem] py-[0.8rem] flex `,
+  wrapper: `w-full px-[1.2rem] py-[0.8rem] flex fixed bg-white`,
   logoText: `text-xl font-bold text-gray-800`,
 };
 
