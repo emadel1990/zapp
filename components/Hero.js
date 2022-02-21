@@ -2,10 +2,10 @@ import React from "react";
 import Image from "next/image";
 
 const style = {
-  hero: "flex flex-row justify-center bg-rose-100  w-screen ml-[-80px] h-[467px] overflow-hidden",
-  divTitle: "h-[100%]  w-80 mx-10  flex flex-wrap",
-  title: "text-6xl font-bold flex items-center pt-4",
-  subTitle: "text-2xl flex w-[260px] ",
+  hero: "flex flex-row justify-center bg-rose-100  w-screen ml-[-73px] h-[467px] overflow-hidden",
+  divTitle: "w-[450px] mx-10 flex flex-col justify-center",
+  title: "text-7xl font-bold flex items-center py-4",
+  subTitle: "text-3xl text-gray-700",
   divImage: "flex px-8 scale-[150%] overflow-hidden ",
 };
 
@@ -13,8 +13,15 @@ const Hero = () => {
   return (
     <hero className={style.hero}>
       <div className={style.divTitle}>
-        <h1 className={style.title}>Make better projects</h1>
-        <h2 className={style.subTitle}>being friendly is always better</h2>
+        <span className="relative">
+          <h1 className={style.title}>Make Better Projects</h1>
+          <img
+            src="/assets/coffee.svg"
+            alt=""
+            className="absolute bottom-1 right-[6rem]"
+          />
+        </span>
+        <p className={style.subTitle}>Being friendly is always better</p>
       </div>
       <div className={style.divImage}>
         <Image

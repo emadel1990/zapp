@@ -6,7 +6,7 @@ const style = {
   section:
     "flex justify-center items-center mx-28 my-28 px-2 border-2 drop-shadow-lg rounded-md",
   ph: "w-full px-10 ml-6",
-  img: "flex justify-center w-full mx-10",
+  img: "flex justify-center w-full mr-10",
 };
 
 const BestPractices = () => {
