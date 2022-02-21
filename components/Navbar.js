@@ -11,15 +11,15 @@ import {
 } from "react-icons/ri";
 
 const style = {
-  wrapper: `w-full px-14 py-[0.8rem] flex justify-between fixed bg-white`,
-  logoText: `text-xl font-black text-gray-800`,
+  wrapper: `w-full px-14 py-[0.8rem] flex justify-between fixed bg-white z-20`,
+  logoText: `text-4xl font-black text-gray-800`,
   navbar: `flex space-x-4 text-lg font-medium items-center`,
 };
 
 const Navbar = () => {
   return (
     <div className={style.wrapper}>
-      <h2 className={style.logoText}>Navbar</h2>
+      <h2 className={style.logoText}>zApp</h2>
       <div className={style.navbar}>
         <Link href="/">
           <motion.a
@@ -30,7 +30,7 @@ const Navbar = () => {
             }}
             className="cursor-pointer p-1 flex items-center"
           >
-            <RiHome2Fill className="mr-1"/> Home
+            <RiHome2Fill className="mr-1" /> Home
           </motion.a>
         </Link>
         <Link href="/">
