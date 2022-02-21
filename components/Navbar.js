@@ -67,7 +67,7 @@ const Navbar = () => {
           onClick={() => setDropdown(!dropdown)}
         >
           <span className={style.navItem}>
-            <RiContactsFill className="mr-1" /> Contact us
+            <RiContactsFill className="mr-1" /> About us
           </span>
         </button>
         {dropdown && <Dropdown dropdown={dropdown} setDropdown={setDropdown} />}
