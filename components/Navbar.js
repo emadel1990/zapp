@@ -1,72 +1,77 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Dropdown from "./Dropdown";
-import { motion } from "framer-motion";
-import {
-  RiInstagramFill,
-  RiLinkedinBoxFill,
-  RiGithubFill,
-  RiHome2Fill,
-  RiListCheck2,
-} from "react-icons/ri";
+
+import { RiListCheck2, RiContactsFill, RiArticleLine } from "react-icons/ri";
+import { FaHome } from "react-icons/fa";
 
 const style = {
-  wrapper: `w-full px-14 py-[0.8rem] flex justify-between fixed bg-white z-20`,
+  wrapper: `w-full px-14 py-[0.8rem] flex justify-between fixed bg-white z-40`,
   logoText: `text-4xl font-black text-gray-800`,
-  navbar: `flex space-x-4 text-lg font-medium items-center`,
+  navbar: `flex space-x-4 text-lg items-center`,
+  navItem: `flex items-center`,
+  hoverAnimation: `hover:-translate-y-1 hover:scale-105 transition ease-in-out duration-200`,
+  hoverButtonAnimation: `p-2 transition duration-150 ease-in-out rounded-full hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100 focus:text-blue-500 focus:outline-none`,
 };
 
 const Navbar = () => {
+  const [dropdown, setDropdown] = useState(false);
+
+  const closeMobileMenu = () => setDropdown(false);
+  const wrapperRef = useRef(null);
+
+  function useOutsideClick(ref) {
+    useEffect(() => {
+      function handleClickOutside(e) {
+        if (ref.current && !ref.current.contains(e.target)) {
+          closeMobileMenu();
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+  useOutsideClick(wrapperRef);
+
   return (
-    <div className={style.wrapper}>
+    <div className={style.wrapper} ref={wrapperRef}>
       <h2 className={style.logoText}>zApp</h2>
-      <div className={style.navbar}>
-        <Link href="/">
-          <motion.a
-            whileHover={{
-              color: "#86bbd8",
-              x: 2,
-              y: -1,
-            }}
-            className="cursor-pointer p-1 flex items-center"
-          >
-            <RiHome2Fill className="mr-1" /> Home
-          </motion.a>
-        </Link>
-        <Link href="/">
-          <motion.a
-            whileHover={{
-              color: "#86bbd8",
-              x: 2,
-              y: -1,
-            }}
-            className="cursor-pointer p-1 flex items-center"
-          >
-            <RiListCheck2 className="mr-1" /> Projects
-          </motion.a>
-        </Link>
-        <Dropdown
-          icon={<RiInstagramFill />}
-          text1="emaaadelgado"
-          text2="gabriel_briitez"
-          link1="https://www.instagram.com/emaaadelgado/"
-          link2="https://www.instagram.com/gabriel_briitez/"
-        />
-        <Dropdown
-          icon={<RiGithubFill />}
-          text1="emadel1990"
-          text2="gbritez53"
-          link1="https://github.com/emadel1990"
-          link2="https://github.com/gbritez53"
-        />
-        <Dropdown
-          icon={<RiLinkedinBoxFill />}
-          text1="emadevjs"
-          text2="gabriel-britez"
-          link1="https://www.linkedin.com/in/emadevjs/"
-          link2="https://www.linkedin.com/in/gabriel-britez/"
-        />
-      </div>
+      <ul className={style.navbar}>
+        <li className={style.hoverAnimation}>
+          <Link href="/">
+            <a className={style.navItem}>
+              <FaHome className="mr-1" /> Home
+            </a>
+          </Link>
+        </li>
+        <li className={style.hoverAnimation}>
+          <Link href="/">
+            <a className={style.navItem}>
+              <RiListCheck2 className="mr-1" /> Projects
+            </a>
+          </Link>
+        </li>
+        <li className={style.hoverAnimation}>
+          <Link href="/">
+            <a className={style.navItem}>
+              <RiArticleLine className="mr-1" /> Articles
+            </a>
+          </Link>
+        </li>
+
+        <button
+          className={style.hoverAnimation}
+          onClick={() => setDropdown(true)}
+        >
+          <span className={style.navItem}>
+            <RiContactsFill className="mr-1" /> Contact us
+          </span>
+          {dropdown && <Dropdown setDropdown={setDropdown} />}
+        </button>
+      </ul>
     </div>
   );
 };
