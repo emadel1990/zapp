@@ -10,8 +10,8 @@ const style = {
   logoText: `text-4xl font-black text-gray-800`,
   navbar: `flex space-x-4 text-lg items-center`,
   navItem: `flex items-center`,
-  hoverAnimation: `hover:-translate-y-1 hover:scale-105 transition ease-in-out duration-200`,
-  hoverButtonAnimation: `p-2 transition duration-150 ease-in-out rounded-full hover:bg-blue-100 hover:text-blue-500 focus:bg-blue-100 focus:text-blue-500 focus:outline-none`,
+  hoverAnimation: `hover:-translate-y-[1px] transition ease-in-out duration-[100ms]`,
+  hoverButtonAnimation: `p-2 hover:-translate-y-[1px] transition duration-[100ms] ease-in-out focus:outline-none`,
 };
 
 const Navbar = () => {
@@ -63,14 +63,14 @@ const Navbar = () => {
         </li>
 
         <button
-          className={style.hoverAnimation}
-          onClick={() => setDropdown(true)}
+          className={style.hoverButtonAnimation}
+          onClick={() => setDropdown(!dropdown)}
         >
           <span className={style.navItem}>
             <RiContactsFill className="mr-1" /> Contact us
           </span>
-          {dropdown && <Dropdown setDropdown={setDropdown} />}
         </button>
+        {dropdown && <Dropdown dropdown={dropdown} setDropdown={setDropdown} />}
       </ul>
     </div>
   );

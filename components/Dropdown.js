@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   RiInstagramFill,
   RiLinkedinBoxFill,
@@ -5,12 +6,19 @@ import {
 } from "react-icons/ri";
 
 const style = {
-  listContainer: `absolute top-1 right-0 bg-white rounded-md shadow border border-slate-200 text-gray-800 w-48 flex flex-col justify-start`,
+  listContainer: `absolute transition-none top-6 right-[-430px] bg-white rounded-md shadow border border-slate-200 text-gray-800 w-48 flex flex-col justify-start`,
   listItem: `hover:bg-blue-100 hover:text-blue-700 hover:font-medium px-4 py-2 z-10`,
 };
 
 const Dropdown = ({ setDropdown }) => {
-  const handleClick = () => setDropdown(false);
+  const [open, isOpen] = useState(false);
+  const handleClick = () => {
+    isOpen(!open);
+  };
+
+  useEffect(() => {
+    setDropdown(!open);
+  }, [open, setDropdown]);
 
   const MenuItems = [
     {
@@ -46,7 +54,7 @@ const Dropdown = ({ setDropdown }) => {
   ];
 
   return (
-    <div className="relative">
+    <div className="absolute">
       <div className={style.listContainer}>
         {MenuItems.map((item, i) => (
           <a

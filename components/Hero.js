@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 
 const style = {
-  hero: "flex flex-row justify-center bg-rose-100  w-screen ml-[-70px] h-[467px] overflow-hidden",
+  hero: "flex flex-row justify-center bg-rose-100  w-screen ml-[-80px] h-[467px] overflow-hidden",
   divTitle: "h-[100%]  w-80 mx-10  flex flex-wrap",
   title: "text-6xl font-bold flex items-center pt-4",
   subTitle: "text-2xl flex w-[260px] ",

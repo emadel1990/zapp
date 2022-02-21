@@ -6,7 +6,7 @@ const style = {
   section:
     "flex justify-center items-center mx-28 my-28 px-2 border-2 drop-shadow-lg rounded-md",
   ph: "w-full px-10 ml-6",
-  img: "flex justify-center w-full",
+  img: "flex justify-center w-full mx-10",
 };
 
 const BestPractices = () => {
@@ -21,7 +21,7 @@ const BestPractices = () => {
             well with these best practices...
           </p>
           <p className="pt-6">&copy; Jason Thomas </p>
-          <div className="flex flex-row whitespace-nowrap space-x-[350px] pt-8">
+          <div className="flex flex-row whitespace-nowrap justify-between pt-8">
             <p>July 12, 2021</p>
             <Link className="" href={""}>
               Read more...
